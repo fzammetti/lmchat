@@ -302,8 +302,11 @@ class LMChat {
 
     console.log(`saveSettings()`);
 
+    // The first two are straightforward.
     localStorage.setItem(`serverAddress`, this.#domNodes.serverAddressInput.value);
     localStorage.setItem(`customInstructions`, this.#domNodes.customInstructionsTextArea.value);
+
+    // The dark mode setting just needs any value when set, and the setting is removed when not set (light mode).
     const useDarkMode = this.#domNodes.darkModeSwitch.checked;
     if (useDarkMode) {
       localStorage.setItem(`darkMode`, `yes`);
@@ -321,7 +324,28 @@ class LMChat {
 
     console.log(`changeTheme()`);
 
+    // Apply the appropriate theme to the HTML element.
     document.documentElement.className = this.#domNodes.darkModeSwitch.checked ? `sl-theme-dark` : `sl-theme-light`;
+
+    // One problem is that by default in light mode, the text of the user's query will be black, which obviously won't
+    // work when in dark mode.  So, we'll change the class on all the elements containing that text such that the text
+    // will be black in light mode and white in dark mode.
+    //noinspection JSUnusedAssignment
+    let elements = null;
+    if (this.#domNodes.darkModeSwitch.checked) {
+      elements = document.querySelectorAll(`.conversationUserQuery`);
+      elements.forEach(element => {
+        element.classList.remove(`conversationUserQuery`);
+        element.classList.add(`conversationUserQueryDark`);
+      });
+    } else {
+      elements = document.querySelectorAll(`.conversationUserQueryDark`);
+      elements.forEach(element => {
+        element.classList.remove(`conversationUserQueryDark`);
+        element.classList.add(`conversationUserQuery`);
+      });
+    }
+
 
   } /* End changeTheme(). */
 
