@@ -1,7 +1,5 @@
 # LMChat
 
----
-
 LMChat is a simple ChatGPT clone that uses [LM Studio](https://lmstudio.ai) as a back-end LLM provider.  It uses the 
 [Shoelace](https://shoelace.style) library for its UI.
 
