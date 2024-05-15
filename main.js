@@ -20,6 +20,7 @@ class LMChat {
     submitAbortQueryIcon: null, /* The Query/Abort button's icon. */
     currentConversationResponse: null, /* The current server response being written. */
     drawer: null, /* The settings Drawer. */
+    drawerTrigger: null, /* The settings Drawer trigger Icon. */
     serverAddressInput: null, /* The server address Input. */
     customInstructionsTextArea: null, /* The custom instructions TextArea. */
     darkModeSwitch: null /* The dark mode Switch. */
@@ -41,6 +42,7 @@ class LMChat {
     this.#domNodes.submitAbortQueryButton = document.getElementById(`submitAbortQueryButton`);
     this.#domNodes.submitAbortQueryIcon = document.getElementById(`submitAbortQueryIcon`);
     this.#domNodes.drawer = document.getElementById(`drawer`);
+    this.#domNodes.drawerTrigger = document.getElementById(`drawerTrigger`);
     this.#domNodes.customInstructionsTextArea = document.getElementById(`customInstructionsTextArea`);
     this.#domNodes.serverAddressInput = document.getElementById(`serverAddressInput`);
     this.#domNodes.darkModeSwitch = document.getElementById(`darkModeSwitch`);
@@ -63,11 +65,11 @@ class LMChat {
       this.#changeTheme();
     }
 
-    // Attach listener to Drawer hide event to save the settings.
+    // Attach event listeners to elements as needed.
     this.#domNodes.drawer.addEventListener(`sl-hide`, this.#saveSettings.bind(this));
-
-    // Attach listener to dark mode Switch change event to save the settings.
     this.#domNodes.drawer.addEventListener(`sl-change`, this.#changeTheme.bind(this));
+    this.#domNodes.drawerTrigger.addEventListener(`click`, this.#openDrawer.bind(this));
+    this.#domNodes.submitAbortQueryButton.addEventListener(`click`, this.#submitOrAbortQuery.bind(this));
 
   } /* End init(). */
 
@@ -88,7 +90,7 @@ class LMChat {
   /**
    * Submits a query to the server and processes the response from it.
    */
-  async submitOrAbortQuery() {
+  async #submitOrAbortQuery() {
 
     console.log(`submitOrAbortQuery()`);
 
@@ -286,7 +288,7 @@ class LMChat {
   /**
    * Called when the drawer trigger button is clicked to open the drawer.
    */
-  openDrawer() {
+  #openDrawer() {
 
     console.log(`openDrawer()`);
 
