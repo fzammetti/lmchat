@@ -54,6 +54,9 @@ server you can even get pretty good performance out of it (and, of course, you c
 if you like, though there's probably not too much point in doing that since the LM Studio UI is superior to LMChat,
 so you might as well use it if you're running it locally anyway).
 
-Have fun, kids!
+## Known Issues
 
+* There is currently no formatting in the response, it's just dumped into a div as-is.  Formatting when in steaming mode is a little tricky, but I have a plan, and I intend to get to it before too long. 
+
+Thanks and have fun, kids!
 Frank
