@@ -1,0 +1,71 @@
+<!--suppress HtmlUnknownTag, JSUnresolvedLibraryURL -->
+
+<!DOCTYPE html>
+<html lang="EN">
+
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <title>LMChat</title>
+
+    <!-- Shoelace resources. -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/themes/light.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/themes/dark.css" />
+    <script type="module"
+      src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/shoelace-autoloader.js"></script>
+
+    <!-- LMChat resources. -->
+    <link rel="stylesheet" href="styles.css" />
+    <script src="main.js"></script>
+
+  </head>
+
+  <body onLoad="lmChat.init();" class="bodyContent">
+
+    <div class="header">LMChat</div>
+
+    <sl-alert id="emptyQueryAlert" variant="danger" duration="3000" closable>
+      <sl-icon slot="icon" name="exclamation-octagon"></sl-icon>
+      <strong>Error</strong><br />
+      Please enter a query
+    </sl-alert>
+
+    <sl-alert id="emptyServerAddressAlert" variant="danger" duration="3000" closable>
+      <sl-icon slot="icon" name="exclamation-octagon"></sl-icon>
+      <strong>Error</strong><br />
+      Please enter a server address
+    </sl-alert>
+
+    <sl-drawer id="drawer" label="Settings" placement="start" class="drawer-placement-start">
+      <sl-input id="serverAddressInput" label="Server Address"
+        help-text="What is the full URL to the server where LM Studio is running?"></sl-input>
+      <sl-textarea id="customInstructionsTextArea" label="Custom Instructions" resize="none" size="medium"
+        class="settingsCustomInstructions"
+        help-text="What would you like LMChat to know about you to provide better responses?">
+      </sl-textarea>
+      <sl-switch id="darkModeSwitch">Dark Mode</sl-switch>
+    </sl-drawer>
+    <sl-icon id="drawerTrigger" name="gear" label="Settings" class="drawerTrigger"
+      onClick="lmChat.openDrawer();"></sl-icon>
+
+    <div class="conversationArea" id="conversationArea"></div>
+
+    <div class="footer">
+      <div class="footerQueryArea">
+        <sl-textarea
+          id="queryTextArea" placeholder="Enter query here" filled size="medium" resize="none">
+        </sl-textarea>
+      </div>
+      <div class="footerQueryControl">
+        <sl-button
+          id="submitAbortQueryButton" size="medium" variant="primary" circle onClick="lmChat.submitOrAbortQuery();">
+          <sl-icon id="submitAbortQueryIcon" name="box-arrow-up" label="Submit Query"></sl-icon>
+        </sl-button>
+      </div>
+    </div>
+
+  </body>
+
+</html>

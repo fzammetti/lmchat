@@ -1,0 +1,88 @@
+/* Styles for body tag. */
+body, html {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+}
+
+
+/* Styles for the header. */
+.header {
+  position: absolute;
+  top: 10px;
+  right: 0;
+  margin-right: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+
+/* Styles for the settings Drawer. */
+.drawerTrigger {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}
+.settingsCustomInstructions {
+  margin-bottom: 40px;
+  margin-top: 40px;
+}
+
+
+/* Styles for the main conversation area. */
+.conversationArea {
+  border-top: 1px solid #000000;
+  flex: 1;
+  margin-bottom: 10px;
+  margin-top: 40px;
+  overflow: auto;
+  padding: 6px;
+}
+.conversationUserContainer {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 20px;
+}
+.conversationUserIcon {
+  margin-right: 10px;
+}
+.conversationUserInnerDiv {
+  display: flex;
+  flex-direction: column;
+}
+.conversationUserHeader {
+  color: #ff0000;
+  font-weight: bold;
+}
+.conversationUserQuery {
+  color: #000000;
+}
+.conversationServerResponse {
+  background-color: #f0f0f0;
+  border-radius: 10px 10px 10px 10px;
+  box-shadow: 6px 6px 6px 0 rgba(0,0,0,0.5);
+  margin-right: 10px;
+  margin-top: 10px;
+  padding: 6px;
+  white-space: pre-wrap;
+}
+
+
+/* Styles for the footer and its subcomponents. */
+.footer {
+  align-items: center;
+  background-color: lightgray;
+  display: flex;
+  justify-content: space-between;
+  padding: 6px;
+}
+.footerQueryArea {
+  flex: 1;
+}
+.footerQueryControl {
+  display: flex;
+  margin: 6px;
+}
